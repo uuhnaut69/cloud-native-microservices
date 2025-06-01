@@ -1,0 +1,15 @@
+server:
+  compression:
+    enabled: true
+    min-response-size: 1KB
+---
+spring:
+  application:
+    name: api-gateway
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+        exclude: env, info
