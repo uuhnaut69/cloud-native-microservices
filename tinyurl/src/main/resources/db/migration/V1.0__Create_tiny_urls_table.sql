@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS tiny_urls
+(
+    id           VARCHAR(36)   NOT NULL PRIMARY KEY,
+    original_url VARCHAR(2048) NOT NULL,
+    short_url    VARCHAR(255)  NOT NULL UNIQUE,
+    created_at   TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

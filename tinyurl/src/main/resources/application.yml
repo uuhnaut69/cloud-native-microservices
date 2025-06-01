@@ -1,3 +1,47 @@
 quarkus:
+  devservices:
+    enabled: false
+  http:
+    port: 8090
+---
+# Database configuration for MySQL
+quarkus:
   datasource:
-    jdbc: false
+    db-kind: mysql
+    jdbc:
+      url: jdbc:mysql://localhost:3307/tinyurl_db?allowPublicKeyRetrieval=true&useSSL=false
+    username: tinyurl
+    password: tinyurl
+  hibernate-orm:
+    schema-management:
+      strategy: none
+---
+# Flyway configuration for database migrations
+quarkus:
+  flyway:
+    jdbc-url: ${quarkus.datasource.jdbc.url}
+    username: ${quarkus.datasource.username}
+    password: ${quarkus.datasource.password}
+    baseline-on-migrate: true
+    migrate-at-start: true
+---
+# Cache configuration for Redis
+quarkus:
+  redis:
+    hosts: redis://localhost:6379
+    client-name: tinyurl-redis
+---
+# OpenAPI configuration
+quarkus:
+  smallrye-openapi:
+    info-title: TinyURL Service API
+    info-version: 1.0.0
+    info-description: API for TinyURL service
+---
+quarkus:
+  native:
+    additional-build-args:
+      - --initialize-at-run-time=com.soundicly.jnanoidenhanced.jnanoid.NanoIdUtils
+      - --initialize-at-run-time=com.github.f4b6a3.uuid.UuidCreator
+      - --initialize-at-run-time=com.github.f4b6a3.uuid.factory.standard.TimeOrderedEpochFactory
+      - --initialize-at-run-time=com.github.f4b6a3.uuid.util.internal.RandomUtil$SecureRandomPool
