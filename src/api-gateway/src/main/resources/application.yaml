@@ -1,0 +1,44 @@
+server:
+  compression:
+    enabled: true
+    min-response-size: 1KB
+  shutdown: graceful
+---
+spring:
+  application:
+    name: api-gateway
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+        exclude: env, info
+---
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowed-origins: '*'
+                allowed-methods: GET, POST, PUT, DELETE, OPTIONS
+                allowed-headers: '*'
+                allow-credentials: false
+          routes:
+            - id: tinyurl-service
+              uri: ${TINYURL_SERVICE_URI:http://localhost:8090}
+              predicates:
+                - Path=/tinyurl/**
+              filters:
+                - RewritePath=/tinyurl/(?<segment>.*), /${segment}
+            - id: catalog-service
+              uri: ${CATALOG_SERVICE_URL:http://localhost:4567}
+              predicates:
+                - Path=/catalog/**
+              filters:
+                - RewritePath=/catalog/(?<segment>.*), /${segment}
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin

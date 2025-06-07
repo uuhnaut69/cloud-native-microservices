@@ -1,0 +1,23 @@
+server:
+  compression:
+    enabled: true
+    min-response-size: 1KB
+  shutdown: graceful
+  port: 4567
+---
+spring:
+  application:
+    name: catalog-service
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+        exclude: env, info
+---
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:secret@localhost:27017/catalog_db?authSource=admin
+      auto-index-creation: true
