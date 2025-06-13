@@ -35,7 +35,7 @@ spring:
               filters:
                 - RewritePath=/tinyurl/(?<segment>.*), /${segment}
             - id: catalog-service
-              uri: ${CATALOG_SERVICE_URL:http://localhost:4567}
+              uri: ${CATALOG_SERVICE_URI:http://localhost:4567}
               predicates:
                 - Path=/catalog/**
               filters:
