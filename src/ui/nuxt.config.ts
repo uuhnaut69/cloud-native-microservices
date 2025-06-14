@@ -12,8 +12,20 @@ export default defineNuxtConfig({
     "@nuxt/test-utils",
     "@nuxt/ui",
     "@nuxtjs/tailwindcss",
+    "shadcn-nuxt",
   ],
   imports: {
     autoImport: true,
+  },
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: "",
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: "./components/ui",
   },
 });
