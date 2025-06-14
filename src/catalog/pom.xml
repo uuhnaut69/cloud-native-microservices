@@ -37,16 +37,20 @@
   <developers>
     <developer/>
   </developers>
+
   <scm>
     <connection/>
     <developerConnection/>
     <tag/>
     <url/>
   </scm>
+
   <properties>
     <java.version>21</java.version>
     <slugify.version>3.0.7</slugify.version>
+    <openapi-webflux-ui.version>2.6.0</openapi-webflux-ui.version>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -108,6 +112,11 @@
       <groupId>com.github.slugify</groupId>
       <artifactId>slugify</artifactId>
       <version>${slugify.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+      <version>${openapi-webflux-ui.version}</version>
     </dependency>
   </dependencies>
 

@@ -49,6 +49,7 @@
   <properties>
     <java.version>24</java.version>
     <spring-cloud.version>2025.0.0</spring-cloud.version>
+    <openapi-webflux-ui.version>2.6.0</openapi-webflux-ui.version>
   </properties>
 
   <dependencies>
@@ -95,7 +96,14 @@
       <artifactId>reactor-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+      <version>${openapi-webflux-ui.version}</version>
+    </dependency>
   </dependencies>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
