@@ -9,7 +9,8 @@
     "terraform",
     "npm",
     "maven",
-    "gomod"
+    "gomod",
+    "cargo"
   ],
   "packageRules": [
     {
