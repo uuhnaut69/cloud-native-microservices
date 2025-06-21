@@ -40,6 +40,12 @@ spring:
                 - Path=/catalog/**
               filters:
                 - RewritePath=/catalog/(?<segment>.*), /${segment}
+            - id: ads-service
+              uri: ${AD_SERVICE_URI:http://localhost:4568}
+              predicates:
+                - Path=/ads/**
+              filters:
+                - RewritePath=/ads/(?<segment>.*), /${segment}
           default-filters:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
 ---
@@ -55,6 +61,8 @@ springdoc:
         url: /v3/api-docs
       - name: catalog-service
         url: ${CATALOG_SERVICE_URI:http://localhost:4567}/v3/api-docs
+      - name: ads-service
+        url: ${AD_SERVICE_URI:http://localhost:4568}/swagger/ads-1.0.0.yml
     syntax-highlight:
       activated: true
       theme: dark

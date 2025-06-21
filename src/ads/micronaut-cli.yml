@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.uuhnaut69
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, awaitility, flyway, graalvm, hibernate-validator, http-client-test, jackson-databind, java, java-application, jdbc-hikari, jib, junit, kubernetes, logback, lombok, management, maven, maven-enforcer-plugin, micronaut-aot, micronaut-http-validation, mysql, netty-server, openapi, properties, r2dbc, readme, shade, static-resources, swagger-ui, test-resources]

@@ -29,3 +29,15 @@ services:
     ports:
       - '27017:27017'
     restart: on-failure
+
+  ads_db:
+    image: 'mysql:latest'
+    container_name: 'ads_db'
+    environment:
+      - 'MYSQL_DATABASE=ads_db'
+      - 'MYSQL_PASSWORD=ads'
+      - 'MYSQL_ROOT_PASSWORD=root'
+      - 'MYSQL_USER=ads'
+    ports:
+      - '3308:3306'
+    restart: on-failure
