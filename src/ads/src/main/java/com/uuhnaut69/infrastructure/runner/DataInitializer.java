@@ -22,7 +22,6 @@ import io.micronaut.context.event.StartupEvent;
 import io.micronaut.runtime.event.annotation.EventListener;
 import jakarta.inject.Singleton;
 import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 
 @Singleton
@@ -38,14 +37,12 @@ public class DataInitializer {
         .flatMapMany(count -> this.repository.saveAll(
             List.of(
                 AdEntity.builder()
-                    .id(UUID.randomUUID().toString())
                     .title("Flash Sale - 50% Off!")
                     .description("Get up to 50% off on selected items. Limited time offer!")
                     .buttonText("Shop Now")
                     .url("/flash-sale")
                     .build(),
                 AdEntity.builder()
-                    .id(UUID.randomUUID().toString())
                     .title("New Arrivals - 20% Off!")
                     .description(
                         "Discover our latest collection and enjoy 20% off your first order.")

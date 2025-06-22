@@ -21,14 +21,17 @@ import com.uuhnaut69.domain.spi.AdRepository;
 import io.micronaut.data.model.query.builder.sql.Dialect;
 import io.micronaut.data.r2dbc.annotation.R2dbcRepository;
 import io.micronaut.data.repository.reactive.ReactorCrudRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
 @R2dbcRepository(dialect = Dialect.MYSQL)
 public abstract class AdR2DbcRepository
-    implements AdRepository, ReactorCrudRepository<AdEntity, String> {
+    implements AdRepository, ReactorCrudRepository<AdEntity, UUID> {
 
+  @NotNull
   @Override
   public CompletionStage<List<Ad>> getAllAdsAsync() {
     return this.findAll().map(toDomain()).collectList().toFuture();

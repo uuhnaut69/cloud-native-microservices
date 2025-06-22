@@ -16,6 +16,7 @@
 
 package com.uuhnaut69.infrastructure.persistence;
 
+import com.uuhnaut69.domain.BaseEntity;
 import io.micronaut.data.annotation.AutoPopulated;
 import io.micronaut.data.annotation.DateCreated;
 import io.micronaut.data.annotation.DateUpdated;
@@ -23,24 +24,21 @@ import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;
 import io.micronaut.serde.annotation.Serdeable;
 import java.time.Instant;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Serdeable
 @MappedEntity(value = "ads")
-public class AdEntity {
-
-  @Id
-  @AutoPopulated
-  private String id;
+public class AdEntity extends BaseEntity {
 
   private String title;
 
@@ -52,9 +50,23 @@ public class AdEntity {
 
   private String buttonText;
 
+  @Id
+  @AutoPopulated
+  @Override
+  public UUID getId() {
+    return super.getId();
+  }
+
   @DateCreated
-  private Instant createdAt;
+  @Override
+  public Instant getCreatedAt() {
+    return super.getCreatedAt();
+  }
 
   @DateUpdated
-  private Instant updatedAt;
+  @Override
+  public Instant getUpdatedAt() {
+    return super.getUpdatedAt();
+  }
+
 }

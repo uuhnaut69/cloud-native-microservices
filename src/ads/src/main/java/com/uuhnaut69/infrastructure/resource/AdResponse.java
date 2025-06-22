@@ -19,10 +19,11 @@ package com.uuhnaut69.infrastructure.resource;
 import com.uuhnaut69.domain.Ad;
 import io.micronaut.serde.annotation.Serdeable;
 import java.time.Instant;
+import java.util.UUID;
 
 @Serdeable
 public record AdResponse(
-    String id,
+    UUID id,
     String title,
     String description,
     String url,

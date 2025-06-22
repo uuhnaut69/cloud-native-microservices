@@ -16,27 +16,24 @@
 
 package com.uuhnaut69.domain;
 
+import java.time.Instant;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@Setter
 @Getter
+@Setter
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ad extends BaseEntity {
+public abstract class BaseEntity {
 
-  private String title;
+  private UUID id;
 
-  private String description;
+  private Instant createdAt;
 
-  private String url;
-
-  private String imageUrl;
-
-  private String buttonText;
-
+  private Instant updatedAt;
 }
