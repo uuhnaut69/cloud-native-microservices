@@ -29,3 +29,14 @@ services:
     ports:
       - '3308:3306'
     restart: on-failure
+
+  auth_db:
+    image: 'postgres:latest'
+    container_name: 'auth_db'
+    environment:
+      - 'POSTGRES_DB=auth_db'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5432:5432'
+    restart: on-failure
