@@ -1,16 +1,4 @@
 services:
-  tinyurl_db:
-    image: 'mysql:latest'
-    container_name: 'tinyurl_db'
-    environment:
-      - 'MYSQL_DATABASE=tinyurl_db'
-      - 'MYSQL_PASSWORD=tinyurl'
-      - 'MYSQL_ROOT_PASSWORD=root'
-      - 'MYSQL_USER=tinyurl'
-    ports:
-      - '3307:3306'
-    restart: on-failure
-
   redis:
     image: 'redis/redis-stack:latest'
     container_name: 'redis'
